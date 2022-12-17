@@ -1,16 +1,15 @@
 import requests
-x = ["abcdefghijklmnoprstuwyzqxv?.<>,!1:234567890_/*-+()'!@#$%^&=;' "]
+x = "abcdefghijklmnoprstuwyzqxv?.<>,!1:234567890_/*-+()'!@#$%^&=;' "
 alfabet = ["zxcvbnmasdfghjklqwertyuiop"]
 r = requests.get("https://www.mit.edu/~ecprice/wordlist.10000")
 #print(r)
 soup = (r.text)
 soup = soup.split('\n')           
-soup = soup[0:-1]    #2 ma 1 litere, 396 ma 2, 678 ma 3, 1127 ma 4, 1379 ma 5, 1504 ma 6, 1468 ma7, 1162 ma 8, 909 ma 9...
+soup = soup[0:-1]    #2 słowa mają 1 litere, 396 ma 2, 678 ma 3, 1127 ma 4, 1379 ma 5, 1504 ma 6, 1468 ma7, 1162 ma 8, 909 ma 9...
 
 letters = []
 for i in x:
-    for j in i:
-        letters.append(j)
+    letters.append(i)
 for i in soup:
     if len(i) == 1:
         soup.remove(i)
@@ -26,7 +25,7 @@ def breaker(A):
     Words = []
     KeyLetters1 = {}
     for i in letters:
-        amount[i] = A.count(i)    #Dla każdego znaku w haśle zlicza jego liczebność
+        amount[i] = A.count(i)    #Dla każdego znaku w haśle zlicza jego ilość
     MaxValue = max(amount.values())  #MaxValue = ilość tej litery
     MostCommon = []
     for i in amount:
